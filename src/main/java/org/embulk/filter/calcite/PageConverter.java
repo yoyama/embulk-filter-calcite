@@ -54,12 +54,12 @@ public class PageConverter implements ColumnVisitor {
 
     @Override
     public void doubleColumn(Column column) {
-        // Embulk's double is converted into java.math.BigDecimal
+        // Embulk's double is converted into double type
         int i = column.getIndex();
         if (pageReader.isNull(i)) {
             row[i] = null;
         } else {
-            row[i] = new BigDecimal(pageReader.getDouble(i));
+            row[i] = pageReader.getDouble(i);
         }
     }
 
